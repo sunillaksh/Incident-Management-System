@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+      
+    
+      <article>
+        <h2>Incident ID</h2>
+        <p>{{Incident_Datadata.Incident_ID}}</p>
+      </article>
+
+      <article>
+        <h2>Incident Date and Time</h2>
+        <p>{{Incident_Datadata.Incident_DT}}</p>
+      </article>
+
+      <article>
+        <h2>Incident Priority</h2>
+        <p>{{Incident_Datadata.Incident_Priority}}</p>
+      </article>
+
+      <article>
+        <h2>Incident Status </h2>
+        <p>{{Incident_Datadata.Incident_Status}}</p>
+      </article>
+
+      <article>
+        <h2>Details</h2>
+        <p>{{Incident_Datadata.Incident_Detail}}</p>
+      </article>
+    
+    
+
+      
+{% endblock content %}

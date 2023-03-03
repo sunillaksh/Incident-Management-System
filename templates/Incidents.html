@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+{% comment %} provision to search the incident using the Incident ID.  {% endcomment %}
+<form action="" method="post">
+    {% csrf_token %}
+        <label for=""></label>
+        <input type="text" name="incident_tl" id="" value="{{Incident_IDnum}}"  required>
+        <input type="submit" value="Search">
+</form>
+
+<br><br>
+
+<div>
+    <table border="1">
+        <tr>
+            <th >User</th>
+            <th >Incident ID</th>
+            <th >Incident details</th>
+            <th >Date and Time</th>
+            <th >Priority</th>
+            <th >Status</th>
+            <th >View</th>
+            <th >Edit</th>
+            <th >Delet</th>
+        </tr>
+        {% for x in Incident_Datadata %}
+        <tr>
+            <td>{{request.user | title}} </td>
+            <td>{{x.Incident_ID }}</td>
+            <td>{{ x.Incident_Detail }} </td>
+            <td>{{ x.Incident_DT }} </td>
+            <td>{{ x.Incident_Priority }}</td>
+            <td> {{ x.Incident_Status }} </td>
+            <td><a href="/IncidentView/{{x.id}}">View</a></td>
+
+            {% comment %} Any Incident which has the states = closed, should not be editable. {% endcomment %}
+            {% if x.Incident_Status == 'Closed' %}
+            <td>Not Editable</td> 
+            {% else %}
+            <td><a href="/Incidentedit/{{x.id}}">Edit</a></td>
+            {% endif %}       
+            
+            
+            <td><a href="/Incidentdelet/{{x.id}}">Delet</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div>
+    <h3>Create New Incident ________</h3>
+</div>
+
+<div>
+    <form action="{% url 'Incidentcreate' %}" method="post">
+        {% csrf_token %}
+        <div >
+            <label>IncidentDetails</label>
+        </div>
+        <textarea cols="30" rows="10" name="Incident_dl" placeholder="Write something.........." Required></textarea> <br><br>
+
+        <label for="Ipr">Incident Priority</label>
+        <select id="Ipr" name="Ipr">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+
+<br><br>
+
+        <label for="Iss">Incident Status</label>
+        <select id="Iss" name="Iss">
+          <option value="Open">Open</option>
+          <option value="In progress">In progress</option>
+          <option value="Closed">Closed</option>
+        </select>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

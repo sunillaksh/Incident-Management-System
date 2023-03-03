@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div >
+    <form action="saveIncidentedit/{{ Incident_Datadata.id }}" method="post">
+        {% csrf_token %}
+        
+        <label>Details</label>
+        <textarea cols="30" rows="10" name="Incident_dl" Required>{{ Incident_Datadata.Incident_Detail}}</textarea><br><br>
+        
+        <label for="Iss">Incident Status</label>
+        <select id="Iss" name="Iss">
+          <option value="Open">Open</option>
+          <option value="In progress">In progress</option>
+          <option value="Closed">Closed</option>
+        </select>
+        
+        <label for="Ipr">Incident Priority</label>
+        <select id="Ipr" name="Ipr">
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+        
+    </form>
+</div>
+
+
+{% endblock content %}
