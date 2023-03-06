@@ -2,6 +2,8 @@
 An incident management system is a structured approach to handling and resolving unexpected events or crises with the goal of minimizing their impact and restoring normal operations.
 
 <h1> The Key functionalities :</h1>
+<li> login page </li>
+<li> register page </li> <br>
 a. System allow you to create multiple users. <br>
 b. Each user can create multiple incidents. <br>
 c. The format for the Incident ID with the following format- RMG + Random 5 digit number+ Current year (2023) e.g. RMG345712023 <br>
